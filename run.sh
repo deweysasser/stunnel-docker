@@ -10,11 +10,11 @@ perl -i -p -e 's/ENV_(\w+)/$ENV{$1}/g' /etc/stunnel/*.conf
 
 # Generate the keys if they're missing
 
-if [ ! -r /etc/stunnel/stunnel.pem ] ; then
+if [ ! -f /etc/stunnel/server.pem ] ; then
     openssl genrsa -out /etc/stunnel/server.pem
 fi
 
-if [ ! -r /etc/stunnel/stunnel.crt ] ; then
+if [ ! -f /etc/stunnel/server.crt ] ; then
     openssl req -new -key /etc/stunnel/server.pem -subj "/CN=$CERTNAME" -out /etc/stunnel/server.csr
     openssl x509 -req -days 365 -in /etc/stunnel/server.csr -out /etc/stunnel/server.crt -signkey /etc/stunnel/server.pem
 fi
