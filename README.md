@@ -8,7 +8,10 @@ Usage
 
 To secure IMAP:
 
-     docker run -it -p 993:2000 -e LISTEN=993  -e CONNECT=mail:143 --cap-drop ALL deweysasser/stunnel
+     docker run -it -p 993:2000 -e CONNECT=mail:143 --cap-drop ALL deweysasser/stunnel
+
+To secure a web server:
+        docker run -it -p 443:2000 -e CONNECT=web:143 -link web:web --cap-drop ALL deweysasser/stunnel
 
 Usage Notes
 -----------
@@ -30,3 +33,7 @@ automatically.
 If you don't want a self-signed certificate, you can use the created
 /etc/stunnel/stunnel.csr to request a certificate from an appropriate
 authority.
+
+To properly create the file, concatenate the entire certificate chain
+give by the CA into "server.crt", in order starting with the host
+certificate and ending with the CA Root certificate.

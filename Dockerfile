@@ -6,8 +6,8 @@ RUN apt-get -y install stunnel
 
 RUN useradd -m stunnel
 
-RUN mkdir -p /etc/stunnel
-COPY stunnel.conf /etc/stunnel/stunnel.conf
+RUN mkdir -p /etc/stunnel /etc/stunnel.dist /ssl
+COPY stunnel.conf /etc/stunnel.dist/stunnel.conf
 
 EXPOSE 2000
 ENV ACCEPT 2000
