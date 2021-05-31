@@ -1,3 +1,8 @@
+Archives
+========
+
+This project is archived -- I no longer use stunnel and am not spending the time to maintain this.  If someone would like to take it over I'll happily transfer ownership.
+
 stunnel-docker
 ==============
 
